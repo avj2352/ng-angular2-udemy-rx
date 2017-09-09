@@ -1,0 +1,22 @@
+$header-background:#2B37C7;
+.navbar-header {
+  display: flex;
+  flex-direction: row;
+  header {
+    width: 100%;
+    color: white;
+    padding: 0 15px;
+    background-color: $header-background; //CSS gradient
+    /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#2989d8+0,154d9b+90,a7cae5+100 */
+    background: #2989d8;
+    /* Old browsers */
+    background: -moz-linear-gradient(top, #2989d8 0%, #154d9b 90%, #a7cae5 100%);
+    /* FF3.6-15 */
+    background: -webkit-linear-gradient(top, #2989d8 0%, #154d9b 90%, #a7cae5 100%);
+    /* Chrome10-25,Safari5.1-6 */
+    background: linear-gradient(to bottom, #2989d8 0%, #154d9b 90%, #a7cae5 100%);
+    /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#2989d8', endColorstr='#a7cae5', GradientType=0);
+    /* IE6-9 */
+  }
+} //end:.navbar-header
