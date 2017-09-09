@@ -2,7 +2,7 @@ $header-background:#2B37C7;
 .navbar-header {
   display: flex;
   flex-direction: row;
-  header {
+  header {    
     width: 100%;
     color: white;
     padding: 0 15px;
@@ -18,5 +18,11 @@ $header-background:#2B37C7;
     /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
     filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#2989d8', endColorstr='#a7cae5', GradientType=0);
     /* IE6-9 */
-  }
+    span{
+      // border: 1px solid white;
+      position: relative;
+      padding: 0 10px;
+      top:-15px;
+    }
+  }//end:header
 } //end:.navbar-header
