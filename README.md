@@ -182,6 +182,59 @@ export interface ThreadInterface {
 - The store responds to the `action`, and change the internal state of the `store`.
 - It does this using a function called `reducers`. It always produces a new state.
 
+## Creating a RXJS http response and then funciton
 
+In `RxJS` you call a `http` response as follows
 
+> `thread.service.ts`
+```ts
+import { Injectable } from '@angular/core';
+import {Observable} from 'rxjs';
+import 'rxjs/add/operator/map'; // for mapping response
+import {AllUserData} from '../../../shared/dao/all-user-data';
+import {Http} from '@angular/http';
 
+@Injectable()
+export class ThreadsService {
+
+  constructor(private http:Http) { 
+
+  }//end:constructor
+
+  loadUserThreads(): Observable<AllUserData> {
+    return this.http.get('/api/threads')
+      .map(res => res.json());
+  }//end:loadUserThreads
+
+}//end:ThreadsService
+
+```
+You then handle the call back similar to http's `.then` function, but in `RxJS` you use the `.subscribe` function
+
+>thread-selection.component.ts
+```ts
+import { Component, OnInit } from '@angular/core';
+import { ThreadsService } from "app/services/threads.service";
+
+@Component({
+  selector: 'thread-selection-component',
+  templateUrl: './thread-selection.component.html',
+  styleUrls: ['./thread-selection.component.sass']
+})
+export class ThreadSelectionComponent implements OnInit {
+
+  constructor(private threadService:ThreadsService) { 
+
+  }//end:constructor
+
+  ngOnInit() {
+    //Call the REST API - subscribe is similar to .then()
+    this.threadService.loadUserThreads()
+    .subscribe(res => {
+      console.log(res);
+    });
+    ; //loads all the threads associated to a given user
+  }//end:ngOnInit
+
+}
+```
