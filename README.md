@@ -1,5 +1,9 @@
 # Typescript Udemy
 
+## Table of Contents
+
+- [Defining Maps](#defining-maps)
+
 # Type Inference
 
 The following code will not compile in Typescript
@@ -158,3 +162,26 @@ If no type definition files are available for a given library, that will not pre
 - it's a structural subtyping system and not a nominal subtyping system, meaning that type compatibility is achieved by comparing lists of properties and not type names
 
 - there are multiple types of Type Definitions (@types, built-in compiler types and package types), and it's essential to know when to use each and why
+
+# Defining Maps
+
+Javascript, unlike Java and other nominal programming languages, doesnt have built in Maps. the following is how you define a Map in typescript.
+
+```ts
+export interface ThreadInterface {
+    id:number;
+    messageIdList: number[];
+    pariticipantList:{[key:number]:number}; //This is how typescript Map is defined
+}//end:interface-ThreadInterface
+```
+---
+
+# RxJS Store
+
+- If we need to update the memory, we are going to call an `action`. 
+- The store responds to the `action`, and change the internal state of the `store`.
+- It does this using a function called `reducers`. It always produces a new state.
+
+
+
+

@@ -10,6 +10,7 @@ import { ThreadSelectionComponent } from './components/thread-selection/thread-s
 import { ThreadListComponent } from './components/thread-list/thread-list.component';
 import { MessageListComponent } from './components/message-list/message-list.component';
 import { HeaderComponent } from './components/header-component/header-component.component';
+import { ThreadsService } from "app/services/threads.service";
 
 @NgModule({
   declarations: [
@@ -26,7 +27,9 @@ import { HeaderComponent } from './components/header-component/header-component.
     FormsModule,
     HttpModule
   ],
-  providers: [],
+  providers: [
+    ThreadsService    
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
