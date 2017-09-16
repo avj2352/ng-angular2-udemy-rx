@@ -3,7 +3,7 @@ import {ThreadModel} from '../model/thread-model';
 import {MessageModel} from '../model/message-model';
 
 export interface AllUserData{
-    pariticipants:ParticipantModel[];
+    participants:ParticipantModel[];
     messages:MessageModel[];
     threads:ThreadModel[];
 }//end:AllUserData

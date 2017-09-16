@@ -12,7 +12,12 @@ import { ThreadSelectionComponent } from './components/thread-selection/thread-s
 import { ThreadListComponent } from './components/thread-list/thread-list.component';
 import { MessageListComponent } from './components/message-list/message-list.component';
 import { HeaderComponent } from './components/header-component/header-component.component';
-import { ThreadsService } from "app/services/threads.service";
+import { ThreadsService } from 'app/services/threads.service';
+
+// Initial Store values
+import {INITIAL_APPLICATION_STATE} from './store/application-state';
+//Implement reducers
+import * as reducerFunctions from './store/reducers/storeReducer';
 
 @NgModule({
   declarations: [
@@ -28,7 +33,7 @@ import { ThreadsService } from "app/services/threads.service";
     BrowserModule,
     FormsModule,
     HttpModule,
-    StoreModule.provideStore({},)
+    StoreModule.provideStore(reducerFunctions.storeReducer,INITIAL_APPLICATION_STATE)
   ],
   providers: [
     ThreadsService    

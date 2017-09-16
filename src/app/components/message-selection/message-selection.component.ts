@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import {Store} from '@ngrx/store';
+import {ApplicationState} from '../../store/application-state';
 
 @Component({
   selector: 'message-selection-component',
@@ -7,7 +9,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MessageSelectionComponent implements OnInit {
 
-  constructor() { }
+  constructor(
+    private store:Store<ApplicationState>
+  ) {
+    store.subscribe(
+      res => {console.log('Message section received: ', res);}
+    );
+
+   }//end:constructor
 
   ngOnInit() {
   }

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ThreadsService } from "app/services/threads.service";
 import {Store} from '@ngrx/store';
 import {ApplicationState} from '../../store/application-state';
+import {LoadUserThreadsAction} from '../../store/actions/actions';
 
 @Component({
   selector: 'thread-selection-component',
@@ -25,9 +26,9 @@ export class ThreadSelectionComponent implements OnInit {
 
   ngOnInit() {
     //Call the REST API - subscribe is similar to .then()
+    //We are issuing a command for the store object to modify itself, so other parts of the page will receive the same data
     this.threadService.loadUserThreads()
-    .subscribe(res => {
-      console.log(res);
+    .subscribe(allUserData => {  this.store.dispatch(new LoadUserThreadsAction(allUserData));
     });
     ; //loads all the threads associated to a given user
   }//end:ngOnInit
