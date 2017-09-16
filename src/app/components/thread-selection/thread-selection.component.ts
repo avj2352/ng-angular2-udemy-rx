@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ThreadsService } from "app/services/threads.service";
+import {Store} from '@ngrx/store';
+import {ApplicationState} from '../../store/application-state';
 
 @Component({
   selector: 'thread-selection-component',
@@ -8,7 +10,16 @@ import { ThreadsService } from "app/services/threads.service";
 })
 export class ThreadSelectionComponent implements OnInit {
 
-  constructor(private threadService:ThreadsService) { 
+  constructor(
+    private threadService:ThreadsService,
+    private store:Store<ApplicationState>
+  ) { 
+
+    store.subscribe(
+      res => {
+        console.log('Response from Store Observable is: ', res);
+      }
+    );//end:subscribe
 
   }//end:constructor
 

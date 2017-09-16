@@ -2,7 +2,9 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
+import {StoreModule} from '@ngrx/store';
 
+//Custom Components/Services
 import { AppComponent } from './app.component';
 import { UserSelectionComponent } from './components/user-selection/user-selection.component';
 import { MessageSelectionComponent } from './components/message-selection/message-selection.component';
@@ -25,7 +27,8 @@ import { ThreadsService } from "app/services/threads.service";
   imports: [
     BrowserModule,
     FormsModule,
-    HttpModule
+    HttpModule,
+    StoreModule.provideStore({},)
   ],
   providers: [
     ThreadsService    
