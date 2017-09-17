@@ -17,6 +17,7 @@ export function storeReducer(state:ApplicationState, action:Action):ApplicationS
 //inbuilt function
 function handleLoadUserThreadsAction(state:ApplicationState, action:LoadUserThreadsAction):ApplicationState{
     const userData = action.payload;
+    // const currentUserId = state.uiState.currentThreadId;
     //Create a clone using Typescript
     const newState:ApplicationState = Object.assign({},state);
     //Just an awesome one liner for using lodash to create a map.

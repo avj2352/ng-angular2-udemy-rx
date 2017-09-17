@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import {StoreModule} from '@ngrx/store';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 
 //Custom Components/Services
 import { AppComponent } from './app.component';
@@ -33,6 +34,7 @@ import * as reducerFunctions from './store/reducers/storeReducer';
     BrowserModule,
     FormsModule,
     HttpModule,
+    BrowserAnimationsModule,
     StoreModule.provideStore(reducerFunctions.storeReducer,INITIAL_APPLICATION_STATE)
   ],
   providers: [
