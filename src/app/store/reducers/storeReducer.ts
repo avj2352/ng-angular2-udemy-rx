@@ -25,5 +25,10 @@ function handleLoadUserThreadsAction(state:ApplicationState, action:LoadUserThre
         messages: _.keyBy(action.payload.messages,'id'),
         threads:_.keyBy(action.payload.threads,'id')
     };
+    newState.uiState = {
+        userId:action.payload.participants[0].id,
+        currentThreadId:action.payload.threads[0].id
+    };
+    
     return newState;
 }//end:handleLoadUserThreadsAction
