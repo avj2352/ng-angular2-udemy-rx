@@ -1,5 +1,6 @@
 import {ApplicationState} from '../../store/application-state';
 import {ThreadModel} from '../../../../shared/model/thread-model';
+import {ThreadSummaryViewModel} from './view-model/thread-summary.vm';
 import * as _ from 'lodash';
 
 export function mapStoreToUserName(state:ApplicationState):string{
@@ -15,3 +16,18 @@ export function mapStoreToUnreadMessageCounter(state:ApplicationState):number{
       .reduce(
         (acc,thread)=>{return acc + thread.pariticipantList[currentUserId];},3);    
 }//end:mapStoreToUnreadMessageCounter
+
+export function mapStoreToThreadSummaries(state:ApplicationState):ThreadSummaryViewModel[]{
+        const threads = _.values<ThreadModel>(state.storeData.threads);
+        return threads.map(thread => {        
+            const names = _.keys(thread.pariticipantList).map(participantId => state.storeData.participants[participantId].name);
+            const lastMessageId = _.last(thread.messageIdList);
+            const lastMessage = state.storeData.messages[lastMessageId];
+            return {
+                id:thread.id,
+                participantNames:_.join(names,','),
+                lastMessageText:lastMessage.text,
+                timestamp:lastMessage.timestamp
+              };
+        });            
+}//end:mapStoreToThreadSummaries

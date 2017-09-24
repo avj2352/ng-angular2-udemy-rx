@@ -1,5 +1,9 @@
 <div class="thread-section">
-  <span><h3>User: {{userName$ | async}}</h3></span>
-  <span><p>Unread Messages: {{unreadMessageCounter$ | async}}</p></span>
-  <thread-list-component [threads]="threadSummaries$ | async"></thread-list-component>
+  <div class="panel-header">
+    <span><h3>User: {{userName$ | async}}</h3></span>
+    <span><p>Unread Messages: {{unreadMessageCounter$ | async}}</p></span>    
+  </div>
+  <div class="panel-body">
+    <thread-list-component [threads]="threadSummaries$ | async"></thread-list-component>
+  </div>
 </div>

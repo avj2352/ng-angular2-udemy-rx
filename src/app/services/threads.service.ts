@@ -13,7 +13,10 @@ export class ThreadsService {
 
   loadUserThreads(): Observable<AllUserData> {
     return this.http.get('/api/threads')
-      .map(res => res.json());
+      .map(res => {
+        debugger;
+        return res.json()
+      });
   }//end:loadUserThreads
 
 }//end:ThreadsService

@@ -1,21 +1,22 @@
 import {Action} from '@ngrx/store';
+import {Actions} from '@ngrx/effects';
 import * as _ from 'lodash';
 //Custom components
 import {ApplicationState} from './../application-state';
-import {LoadUserThreadsAction, LOAD_USER_THREADS_ACTION} from './../actions/actions';
+import {LoadUserThreadsAction, UserThreadsLoadedAction, LOAD_USER_THREADS_ACTION, USER_THREADS_LOADED_ACTION} from './../actions/actions';
 
 //Our first reducer function
 export function storeReducer(state:ApplicationState, action:Action):ApplicationState{
-    switch(action.type){
-        case LOAD_USER_THREADS_ACTION:
-            return handleLoadUserThreadsAction(state,action);            
+    switch(action.type){        
+        case USER_THREADS_LOADED_ACTION:
+            return handleUserThreadsLoadedAction(state,<any>action);             
         default:
             return state;
     }
 }//end:storeReducer
 
 //inbuilt function
-function handleLoadUserThreadsAction(state:ApplicationState, action:LoadUserThreadsAction):ApplicationState{
+function handleUserThreadsLoadedAction(state:ApplicationState, action:UserThreadsLoadedAction):ApplicationState{
     const userData = action.payload;
     // const currentUserId = state.uiState.currentThreadId;
     //Create a clone using Typescript
@@ -29,7 +30,6 @@ function handleLoadUserThreadsAction(state:ApplicationState, action:LoadUserThre
     newState.uiState = {
         userId:action.payload.participants[0].id,
         currentThreadId:action.payload.threads[0].id
-    };
-    
+    };    
     return newState;
 }//end:handleLoadUserThreadsAction
